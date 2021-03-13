@@ -1,0 +1,207 @@
+* {margin: 0; padding: 0; box-sizing: border-box;}
+html {
+    font-size: 62.5%;
+}
+section {
+    min-height: 86.3rem;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 35%;
+    font-family: 'Josefin Sans', sans-serif;
+    /* background: red; */
+    padding: 10rem 0 3rem 0;
+    text-align: center;
+}
+.form_container {
+    margin: auto auto 0 auto;
+    min-height: 65rem;
+    width: 54rem;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    border-radius: 10px;
+    font-family: 'Josefin Sans', sans-serif;
+}
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+}
+
+#inputField_container {
+    height: 5.5rem;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    display: flex;
+    align-items: center;
+    padding-left: 1.5rem;
+    background-color: white;
+    margin-bottom: 2rem;
+}
+#inputField {
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Josefin Sans', sans-serif;
+    background: transparent;
+    outline: none;
+}
+#circle {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 2.5rem 0 2.5rem;
+    border: 1px solid hsl(236, 9%, 61%);
+}
+.handle_outer_shadow {
+    width: 100%;
+}
+.note_container {
+    width: 100%;
+    height: 5.5rem;
+    border-radius: 1px;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 2.2rem 0 1.5rem;
+    justify-content: center;
+    background: white;
+}
+.note_container p {
+    font-size: 1.6rem;
+    margin-left: 1rem;
+    text-decoration: line-through;
+}
+#cross {
+    border-radius: 50px;
+}
+.head_container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.head {
+    font-size: 4rem;
+    margin-bottom: 5rem;
+    color: white;
+}
+.check_container {
+    width: 100%;
+    justify-content: flex-start;
+    display: flex;
+    align-items: center;
+}
+.buttons_container {
+    height: 5.7rem;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 100%;
+    padding: 0 2rem 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    background: white;
+    border: none;
+    align-items: center;
+    margin-top: 0.9px;
+}
+.toggleButtons {
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.toggleButtons p {
+    font-weight: bold;
+}
+.buttons_container p {
+    font-size: 1.5rem;
+    color: hsl(236, 9%, 61%);
+    font-family: 'Josefin Sans', sans-serif;
+}
+.buttons_container button {
+    background: transparent;
+    border: none;
+    outline: none;
+}
+.submitNoteButton {
+    height: 100%;
+    width: 100%;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+}
+.order {
+    font-size: 1.8rem;
+    color: hsl(236, 9%, 61%);
+    font-family: 'Josefin Sans', sans-serif;
+    word-spacing: 1px;
+    z-index: 0;
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 800px) {
+    html {
+        font-size: 42%;
+    }
+    section {
+        background-image: url(images/bg-mobile-light.jpg);
+        padding-top: 13rem;
+        /* height: auto; */
+        min-height: 100vh;
+    }
+    .form_container {
+        width: 55rem;
+        height: 90rem;
+    }
+    #inputField_container {
+        height: 8rem;
+    }
+    .note_container {
+        height: 8rem;
+    }
+    .buttons_container {
+        height: 7rem;
+        justify-content: space-evenly;
+        margin-top: 2.5rem;
+        width: 100%;
+        border-radius: 5px;
+    }
+    .toggleButtons {
+        justify-content: space-between;
+    }
+    .buttons_container p {
+        font-size: 2rem;
+    }
+    .note_container p {
+        font-size: 2rem;
+    }
+    #todoStatus {
+        justify-content: space-between;
+        padding: 0 2rem 0 2rem;
+        margin-top: 0;
+        width: 100%;
+    }
+
+}
+
+@media only screen and (max-width: 400px) {
+    html {
+        font-size: 35%;
+    }
+}
+
+@media only screen and (max-width: 330px) {
+    html {
+        font-size: 30%;
+    }
+}
