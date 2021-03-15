@@ -152,6 +152,9 @@ ul li {
     z-index: 0;
     cursor: pointer;
 }
+.attribution {
+  text-align: center;
+}
 
 
 @media only screen and (max-width: 800px) {
