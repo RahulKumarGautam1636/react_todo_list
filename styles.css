@@ -22,6 +22,10 @@ section {
     border-radius: 10px;
     font-family: 'Josefin Sans', sans-serif;
 }
+ul li {
+    list-style-type: none;
+}
+
 .form {
     width: 100%;
     display: flex;
@@ -79,7 +83,8 @@ section {
 .note_container p {
     font-size: 1.6rem;
     margin-left: 1rem;
-    text-decoration: line-through;
+    /* text-decoration: line-through; */
+    cursor: grab;
 }
 #cross {
     border-radius: 50px;
@@ -93,6 +98,7 @@ section {
     font-size: 4rem;
     margin-bottom: 5rem;
     color: white;
+    text-decoration: underline;
 }
 .check_container {
     width: 100%;
@@ -147,6 +153,9 @@ section {
     z-index: 0;
     cursor: pointer;
 }
+.attribution {
+  text-align: center;
+}
 
 
 @media only screen and (max-width: 800px) {
@@ -190,6 +199,8 @@ section {
         padding: 0 2rem 0 2rem;
         margin-top: 0;
         width: 100%;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
     }
 
 }
