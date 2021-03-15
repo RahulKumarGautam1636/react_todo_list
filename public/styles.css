@@ -98,6 +98,7 @@ ul li {
     font-size: 4rem;
     margin-bottom: 5rem;
     color: white;
+    text-decoration: underline;
 }
 .check_container {
     width: 100%;
