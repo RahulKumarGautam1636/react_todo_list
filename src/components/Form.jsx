@@ -5,20 +5,20 @@ import Media from 'react-media';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 function TextArea(props) {
-    const [note, setnote] = useState({title: "", status: ""});
+    const [note, setnote] = useState({title: "", status: "", ids: ""});
     const [task, setTask] = useState([
-        {title: "Complete online javascript course", status: true},
-        {title: "Jog around the park 3x", status: false},
-        {title: "10 minutes meditation", status: false},
-        {title: "Read for 1 hour", status: false},
-        {title: "Pick up groceries", status: false},
-        {title: "Complete Todo App on Frontend Mentor", status: false}
+        {title: "Complete online javascript course", status: true, ids: "one"},
+        {title: "Jog around the park 3x", status: false, ids: "two"},
+        {title: "10 minutes meditation", status: false, ids: "three"},
+        {title: "Read for 1 hour", status: false, ids: "four"},
+        {title: "Pick up groceries", status: false, ids: "five"},
+        {title: "Complete Todo App on Frontend Mentor", status: false, ids: "six"}
     ]);
     const [isCompleted, setCompleted] = useState(false);
     const [isActive, setActive] = useState(false);
     const [isDay, setDay] = useState(true);
     const [viewport, setViewport] = useState(false);
-    const [characters, updateCharacters] = useState(task);
+    // const [characters, updateCharacters] = useState(task);
 
 
     function addNote(note) {
@@ -89,16 +89,20 @@ function TextArea(props) {
     }
     function handleOnDragEnd(result) {
         if (!result.destination) return;
-        const items = Array.from(characters);
+        const items = Array.from(task);
         const [reorderedItem] = items.splice(result.source.index, 1);
         items.splice(result.destination.index, 0,  reorderedItem);
-        updateCharacters(items);
+        setTask(items);
     }
 
     var backGroundDay = {backgroundColor: "hsl(0, 0%, 98%)", backgroundImage: viewport? "url(images/bg-mobile-light.jpg)": "url(images/bg-desktop-light.jpg)"};
+    // var backGroundDay = {}
     var backGroundNight = {backgroundColor: "hsl(235, 21%, 11%)", backgroundImage: viewport? "url(images/bg-mobile-dark.jpg)": "url(images/bg-desktop-dark.jpg)"};
+    // var backGroundNight = {}
     var noteBoxShadow = {boxShadow: isDay? "rgba(0, 0, 0, 0.5) 0px 0px 1px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px" : "rgba(255, 255, 255, 0.5) 0px 0px 1px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px"};
+    // var noteBoxShadow = {}
     var notesOuterShadow = {boxShadow: "rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.2) 0px 30px 60px -30px"};
+    // var notesOuterShadow = {}
     var toggleButtonsColor = {color: isDay? "hsl(235, 19%, 35%)": "hsl(233, 11%, 84%)"}
     return (
         <section style={isDay?backGroundDay:backGroundNight}>
@@ -119,17 +123,17 @@ function TextArea(props) {
             <input style={{color: isDay? "hsl(235, 19%, 35%)": "hsl(0, 0%, 98%)"}} id="inputField" onChange={handleChange} type="text" value={note.title}  placeholder="Create a new todo.." autoComplete="off"/>
 
             </div>
+            <div className="handle_outer_shadow">
             <DragDropContext onDragEnd={handleOnDragEnd}>
             <Droppable droppableId="characters">
             {(provided) => (
-            <div className="handle_outer_shadow">
             <ul className="characters" {...provided.droppableProps} ref={provided.innerRef}>
             {task.map((item, index) => {
                return (
                    <Draggable key={item.title} draggableId={item.title} index={index}>
                    {(provided) => (
+                     <li {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
                    <Note
-
                     key={Math.random()*1000}
                     id={index}
                     title={item.title}
@@ -139,8 +143,8 @@ function TextArea(props) {
                     isCompleted={isCompleted}
                     isActive={isActive}
                     isDay={isDay}
-                    provided={provided}
                     />
+                    </li>
                   )}
                   </Draggable>
                     )
@@ -148,10 +152,10 @@ function TextArea(props) {
                )}
                {provided.placeholder}
                </ul>
-               </div>
            )}
           </Droppable>
           </DragDropContext>
+          </div>
 
 
            <div id="todoStatus" style={{display: viewport? "flex": "none", backgroundColor: isDay? "white": "hsl(235, 24%, 19%)", boxShadow: noteBoxShadow.boxShadow}} className="buttons_container">
