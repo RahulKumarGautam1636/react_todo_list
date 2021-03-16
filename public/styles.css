@@ -3,7 +3,8 @@ html {
     font-size: 62.5%;
 }
 section {
-    min-height: 86.3rem;
+    /* min-height: 86.3rem; */
+    min-height: 120%;
     width: 100%;
     background-repeat: no-repeat;
     background-size: 100% 35%;
@@ -164,8 +165,8 @@ ul li {
     section {
         background-image: url(images/bg-mobile-light.jpg);
         padding-top: 13rem;
-        /* height: auto; */
-        min-height: 100vh;
+        height: auto;
+        padding-bottom: 13rem;
     }
     .form_container {
         width: 55rem;

@@ -3,8 +3,11 @@ import Head from "./Heading.jsx";
 import Note from "./note.jsx";
 import Media from 'react-media';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+// import ListItem from '@material-ui/core/ListItem';
+// import ListItemText from '@material-ui/core/ListItemText';
+// import { List } from 'react-window';
 
-function TextArea(props) {
+function TextArea(props, provided: DroppableProvided, snapshot: DroppableStateSnapshot) {
     const [note, setnote] = useState({title: "", status: "", ids: ""});
     const [task, setTask] = useState([
         {title: "Complete online javascript course", status: true, ids: "one"},
@@ -18,8 +21,8 @@ function TextArea(props) {
     const [isActive, setActive] = useState(false);
     const [isDay, setDay] = useState(true);
     const [viewport, setViewport] = useState(false);
+    // const [Listlength, setLength] = useState(86.3)
     // const [characters, updateCharacters] = useState(task);
-
 
     function addNote(note) {
         if (note.length === 0 || note.title === "") {
@@ -30,6 +33,7 @@ function TextArea(props) {
             });
         }
     }
+
     function deleteNote(id) {
         setTask((preNote) => {
             return (
@@ -94,16 +98,13 @@ function TextArea(props) {
         items.splice(result.destination.index, 0,  reorderedItem);
         setTask(items);
     }
-
+    var randomNumber = Math.random()*1000;
     var backGroundDay = {backgroundColor: "hsl(0, 0%, 98%)", backgroundImage: viewport? "url(images/bg-mobile-light.jpg)": "url(images/bg-desktop-light.jpg)"};
-    // var backGroundDay = {}
     var backGroundNight = {backgroundColor: "hsl(235, 21%, 11%)", backgroundImage: viewport? "url(images/bg-mobile-dark.jpg)": "url(images/bg-desktop-dark.jpg)"};
-    // var backGroundNight = {}
     var noteBoxShadow = {boxShadow: isDay? "rgba(0, 0, 0, 0.5) 0px 0px 1px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px" : "rgba(255, 255, 255, 0.5) 0px 0px 1px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px"};
-    // var noteBoxShadow = {}
     var notesOuterShadow = {boxShadow: "rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.2) 0px 30px 60px -30px"};
-    // var notesOuterShadow = {}
-    var toggleButtonsColor = {color: isDay? "hsl(235, 19%, 35%)": "hsl(233, 11%, 84%)"}
+    var toggleButtonsColor = {color: isDay? "hsl(235, 19%, 35%)": "hsl(233, 11%, 84%)"};
+    // var sectionsHeight = {minHeight: "86.5rem", border: "1px solid red"};
     return (
         <section style={isDay?backGroundDay:backGroundNight}>
                 <Media queries={{small: "(max-width: 800px)"}}
@@ -124,17 +125,19 @@ function TextArea(props) {
 
             </div>
             <div className="handle_outer_shadow">
+
             <DragDropContext onDragEnd={handleOnDragEnd}>
             <Droppable droppableId="characters">
             {(provided) => (
             <ul className="characters" {...provided.droppableProps} ref={provided.innerRef}>
             {task.map((item, index) => {
                return (
-                   <Draggable key={item.title} draggableId={item.title} index={index}>
+                   <Draggable key={randomNumber+item.title} draggableId={randomNumber+item.title} index={index}>
                    {(provided) => (
                      <li {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+
                    <Note
-                    key={Math.random()*1000}
+                    key={randomNumber}
                     id={index}
                     title={item.title}
                     handleChecks={() => {handleCheck(index)}}
@@ -144,6 +147,7 @@ function TextArea(props) {
                     isActive={isActive}
                     isDay={isDay}
                     />
+
                     </li>
                   )}
                   </Draggable>
@@ -153,8 +157,12 @@ function TextArea(props) {
                {provided.placeholder}
                </ul>
            )}
+
           </Droppable>
           </DragDropContext>
+
+
+
           </div>
 
 
