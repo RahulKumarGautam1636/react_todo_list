@@ -8,14 +8,14 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 // import { List } from 'react-window';
 
 function TextArea(props, provided: DroppableProvided, snapshot: DroppableStateSnapshot) {
-    const [note, setnote] = useState({title: "", status: "", ids: ""});
+    const [note, setnote] = useState({title: "", status: ""});
     const [task, setTask] = useState([
-        {title: "Complete online javascript course", status: true, ids: "one"},
-        {title: "Jog around the park 3x", status: false, ids: "two"},
-        {title: "10 minutes meditation", status: false, ids: "three"},
-        {title: "Read for 1 hour", status: false, ids: "four"},
-        {title: "Pick up groceries", status: false, ids: "five"},
-        {title: "Complete Todo App on Frontend Mentor", status: false, ids: "six"}
+      {title: "Complete online javascript course", status: true},
+      {title: "Jog around the park 3x", status: false},
+      {title: "10 minutes meditation", status: false},
+      {title: "Read for 1 hour", status: false},
+      {title: "Pick up groceries", status: false},
+      {title: "Complete Todo App on Frontend Mentor", status: false}
     ]);
     const [isCompleted, setCompleted] = useState(false);
     const [isActive, setActive] = useState(false);
@@ -34,6 +34,17 @@ function TextArea(props, provided: DroppableProvided, snapshot: DroppableStateSn
         }
     }
 
+    function checkDuplicate(note) {
+      const duplicateItem = (task.filter(item => item.title===note.title)).length;
+      if (duplicateItem===1) {
+        alert("Item Already Exist");
+      } else {
+        addNote(note);
+        console.log(duplicateItem);
+        console.log(note);
+      }
+    }
+
     function deleteNote(id) {
         setTask((preNote) => {
             return (
@@ -43,6 +54,7 @@ function TextArea(props, provided: DroppableProvided, snapshot: DroppableStateSn
             )
         })
     }
+
     function handleChange(event) {
         const {name, value} = event.target;
         setnote((preNote) => {
@@ -50,9 +62,11 @@ function TextArea(props, provided: DroppableProvided, snapshot: DroppableStateSn
         }
         )
     }
+
     function handleClick(e) {
         e.preventDefault();
     }
+
     function handleCheck(id) {
         setTask(preTask => {
             return (
@@ -66,6 +80,7 @@ function TextArea(props, provided: DroppableProvided, snapshot: DroppableStateSn
             )
         })
     }
+
     function handleCompleted() {
         setCompleted(true);
         setActive(false);
@@ -98,7 +113,7 @@ function TextArea(props, provided: DroppableProvided, snapshot: DroppableStateSn
         items.splice(result.destination.index, 0,  reorderedItem);
         setTask(items);
     }
-    var randomNumber = Math.random()*1000;
+
     var backGroundDay = {backgroundColor: "hsl(0, 0%, 98%)", backgroundImage: viewport? "url(images/bg-mobile-light.jpg)": "url(images/bg-desktop-light.jpg)"};
     var backGroundNight = {backgroundColor: "hsl(235, 21%, 11%)", backgroundImage: viewport? "url(images/bg-mobile-dark.jpg)": "url(images/bg-desktop-dark.jpg)"};
     var noteBoxShadow = {boxShadow: isDay? "rgba(0, 0, 0, 0.5) 0px 0px 1px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px" : "rgba(255, 255, 255, 0.5) 0px 0px 1px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px"};
@@ -119,7 +134,7 @@ function TextArea(props, provided: DroppableProvided, snapshot: DroppableStateSn
            <form className="form" onSubmit={handleClick}>
             <div style={{backgroundColor: isDay? "white": "hsl(235, 24%, 19%)"}} id="inputField_container">
             <div id="circle">
-            <button className="submitNoteButton" onClick={() => {addNote(note); setnote({title: ""});}} type="submit"></button>
+            <button className="submitNoteButton" onClick={() => {checkDuplicate(note); setnote({title: "", status: false});}} type="submit"></button>
             </div>
             <input style={{color: isDay? "hsl(235, 19%, 35%)": "hsl(0, 0%, 98%)"}} id="inputField" onChange={handleChange} type="text" value={note.title}  placeholder="Create a new todo.." autoComplete="off"/>
 
@@ -132,13 +147,11 @@ function TextArea(props, provided: DroppableProvided, snapshot: DroppableStateSn
             <ul className="characters" {...provided.droppableProps} ref={provided.innerRef}>
             {task.map((item, index) => {
                return (
-                   <Draggable key={randomNumber+item.title} draggableId={randomNumber+item.title} index={index}>
+                   <Draggable key={item.title} draggableId={item.title} index={index}>
                    {(provided) => (
                      <li {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
 
                    <Note
-                    key={randomNumber}
-                    id={index}
                     title={item.title}
                     handleChecks={() => {handleCheck(index)}}
                     deleteNotes={() => {deleteNote(index)}}
