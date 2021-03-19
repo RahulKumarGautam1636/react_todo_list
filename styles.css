@@ -3,8 +3,8 @@ html {
     font-size: 62.5%;
 }
 section {
-    /* min-height: 86.3rem; */
-    min-height: 120%;
+    min-height: 86.3rem;
+    /* min-height: 120%; */
     width: 100%;
     background-repeat: no-repeat;
     background-size: 100% 35%;
@@ -45,15 +45,19 @@ ul li {
     background-color: white;
     margin-bottom: 2rem;
 }
+/* #inputField_container * {border: 1px solid red} */
 #inputField {
     height: 100%;
-    flex-grow: 1;
+    width: 80%;
     overflow: hidden;
     border: none;
     border-radius: 10px;
     font-family: 'Josefin Sans', sans-serif;
     background: transparent;
     outline: none;
+}
+#input_check {
+    width: 6.5%;
 }
 #circle {
     height: 20px;
@@ -78,7 +82,7 @@ ul li {
     align-items: center;
     padding: 0 2.2rem 0 1.5rem;
     justify-content: center;
-    background: white;
+    /* background: white; */
 }
 .note_container p {
     font-size: 1.6rem;
@@ -174,6 +178,9 @@ ul li {
     #inputField_container {
         height: 8rem;
     }
+    #inputField {
+      /* width: 77.5%; */
+    }
     .note_container {
         height: 8rem;
     }
@@ -201,12 +208,18 @@ ul li {
         border-top-left-radius: 0;
         border-top-right-radius: 0;
     }
+    #input_check {
+      width: 8.7%;
+    }
 
 }
 
 @media only screen and (max-width: 400px) {
     html {
         font-size: 35%;
+    }
+    #input_check {
+      width: 9.5%;
     }
 }
 
