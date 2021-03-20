@@ -7,7 +7,7 @@ function Note(props) {
 
     var dayFont = {color: props.status === false? "hsl(235, 19%, 35%)": "hsl(233, 11%, 84%)"};
     var NightFont = {color: props.status === false? "hsl(233, 11%, 84%)": "hsl(235, 19%, 35%)"};
-    var noteBoxShadow = {boxShadow: props.isDay? "rgba(0, 0, 0, 0.5) 0px 0px 1px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px" : "rgba(255, 255, 255, 0.5) 0px 0px 1px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px"}
+    var noteBoxShadow = {boxShadow: props.isDay? "rgba(0, 0, 0, 0.2) 0px 1px 0px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 0px" : "rgba(255, 255, 255, 0.1) 0px 1px 0px 0px, rgba(27, 31, 35, 0.15) 0px 1px 0px 0px"}
     // var noteBorder = {border: "0.001px solid white"};
 
     return (

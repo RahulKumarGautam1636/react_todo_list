@@ -118,7 +118,7 @@ function TextArea(props, provided: DroppableProvided, snapshot: DroppableStateSn
     var backGroundNight = {backgroundColor: "hsl(235, 21%, 11%)", backgroundImage: viewport? "url(images/bg-mobile-dark.jpg)": "url(images/bg-desktop-dark.jpg)"};
     // var noteBoxShadow = {boxShadow: isDay? "rgba(0, 0, 0, 0.5) 0px 0px 1px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px" : "rgba(255, 255, 255, 0.5) 0px 0px 1px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px"};
     var noteBoxShadow = {};
-    var notesOuterShadow = {boxShadow: isDay ? "rgba(50, 50, 93, 0.40) 0px 50px 100px -20px, rgba(0, 0, 0, 0.5) 0px 30px 60px -30px": "rgba(0, 0, 0, 0.50) 0px 50px 100px -20px, rgba(0, 0, 0, 0.4) 0px 30px 60px -30px"};
+    var notesOuterShadow = {background: isDay? "white": "hsl(235, 24%, 19%)",boxShadow: isDay ? "rgba(50, 50, 93, 0.40) 0px 50px 100px -20px, rgba(0, 0, 0, 0.5) 0px 30px 60px -30px": "rgba(0, 0, 0, 0.50) 0px 50px 100px -20px, rgba(0, 0, 0, 0.4) 0px 30px 60px -30px"};
     // var notesOuterShadow = {};
     var toggleButtonsColor = {color: isDay? "hsl(235, 19%, 35%)": "hsl(233, 11%, 84%)"};
     // var sectionsHeight = {minHeight: "86.5rem", border: "1px solid red"};
@@ -185,7 +185,7 @@ function TextArea(props, provided: DroppableProvided, snapshot: DroppableStateSn
            <p> {(task.filter(item => item.status===isCompleted? true: false)).length} items {isCompleted? "completed": "left"}</p>
            <button type="button" onClick={clearCompleted}><p>Clear Completed</p></button>
            </div>
-           <div style={notesOuterShadow} className="handle_outer_shadow">
+           <div style={{boxShadow: notesOuterShadow.boxShadow}} className="handle_outer_shadow">
            <div style={{display: task.length===0 ? "none" : "flex"}} className="handle_outer_shadow">
            <div style={{backgroundColor: isDay? "white": "hsl(235, 24%, 19%)", boxShadow: noteBoxShadow.boxShadow}} className="buttons_container">
             <p style={{display: viewport ? "none": "flex"}}> {(task.filter(item => item.status===isCompleted? true: false)).length} items {isCompleted? "completed": "left"}</p>
