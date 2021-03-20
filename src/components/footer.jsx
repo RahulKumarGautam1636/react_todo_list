@@ -1,6 +1,3 @@
-
-
-
 function Owner() {
   return (
     <div className="attribution">

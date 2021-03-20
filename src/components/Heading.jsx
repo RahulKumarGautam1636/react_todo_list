@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 
 function Head(props) {
-    // const [isSun, setSun] = useState(true);
-    function handleDayNight() {
-        
+    function handleDayNight() {        
         props.setDay(!props.isDay)
     }
     return (
