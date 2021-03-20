@@ -35,8 +35,7 @@ function TextArea(props, provided: DroppableProvided, snapshot: DroppableStateSn
         alert("Item Already Exist");
       } else {
         addNote(note);
-        console.log(duplicateItem);
-        console.log(note);
+        handleBodyBackground();
       }
     }
 
@@ -108,6 +107,10 @@ function TextArea(props, provided: DroppableProvided, snapshot: DroppableStateSn
         items.splice(result.destination.index, 0,  reorderedItem);
         setTask(items);
     }
+    function handleBodyBackground() {
+      document.querySelector("body").style.backgroundColor = isDay? "hsl(0, 0%, 98%)" : "hsl(235, 21%, 11%)";
+       document.querySelector("body").style.paddingBottom = "3rem";
+    }
 
 // ******************************Variable styles**************************************************************************
 
@@ -116,7 +119,7 @@ function TextArea(props, provided: DroppableProvided, snapshot: DroppableStateSn
     var notesOuterShadow = {background: isDay? "white": "hsl(235, 24%, 19%)",boxShadow: isDay ? "rgba(50, 50, 93, 0.40) 0px 50px 100px -20px, rgba(0, 0, 0, 0.5) 0px 30px 60px -30px": "rgba(0, 0, 0, 0.50) 0px 50px 100px -20px, rgba(0, 0, 0, 0.4) 0px 30px 60px -30px"};
     var buttons_container_styles = {display: viewport && task.length!==0 ? "flex": "none", backgroundColor: isDay? "white": "hsl(235, 24%, 19%)"};
     var toggleButtonsColor = {color: isDay? "hsl(236, 9%, 61%)": "hsl(234, 11%, 52%)"};
-    
+
     return (
         <section style={isDay?backGroundDay:backGroundNight}>
                 <Media queries={{small: "(max-width: 800px)"}}

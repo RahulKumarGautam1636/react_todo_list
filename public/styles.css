@@ -4,7 +4,6 @@ html {
 }
 section {
     min-height: 86.3rem;
-    /* min-height: 120%; */
     width: 100%;
     background-repeat: no-repeat;
     background-size: 100% 35%;
@@ -45,7 +44,6 @@ ul li {
     background-color: white;
     margin-bottom: 2rem;
 }
-/* #inputField_container * {border: 1px solid red} */
 #inputField {
     height: 100%;
     width: 80%;
@@ -162,7 +160,6 @@ ul li {
 .attribution {
   text-align: center;
 }
-
 
 @media only screen and (max-width: 800px) {
     html {
