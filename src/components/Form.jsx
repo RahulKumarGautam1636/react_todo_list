@@ -133,10 +133,10 @@ function TextArea(props, provided: DroppableProvided, snapshot: DroppableStateSn
            <Head isDay={isDay} setDay={setDay}/>
           <form className="form" onSubmit={handleClick}>
            <div style={{backgroundColor: isDay? "white": "hsl(235, 24%, 19%)"}} id="inputField_container">
-            <div id="circle">
-            <button className="submitNoteButton" onClick={() => {checkDuplicate(note); setnote({title: "", status: false});}} type="submit"></button>
+            <div className="circle">
+            <button className="submitNoteButton" onClick={() => {checkDuplicate(note); setnote({title: "", status: false});}} name="submitnote_button" type="submit"></button>
             </div>
-            <input style={{color: isDay? "hsl(235, 19%, 35%)": "hsl(0, 0%, 98%)"}} id="inputField" onChange={handleChange} type="text" value={note.title}  placeholder="Create a new todo.." autoComplete="off"/>
+            <input style={{color: isDay? "hsl(235, 19%, 35%)": "hsl(0, 0%, 98%)"}} id="inputField" onChange={handleChange} type="text" value={note.title} name="main_input" placeholder="Create a new todo.." autoComplete="off"/>
             <svg id="input_check" onClick={() => {checkDuplicate(note); setnote({title: "", status: false});}} xmlns="http://www.w3.org/2000/svg" width="11" height="9"><path fill="none" stroke={isDay? "hsl(235, 19%, 35%)": "hsl(233, 11%, 84%)"} strokeWidth="2" d="M1 4.304L3.696 7l6-6"/></svg>
            </div>
            <div style={notesOuterShadow} className="handle_outer_shadow">
@@ -172,17 +172,17 @@ function TextArea(props, provided: DroppableProvided, snapshot: DroppableStateSn
           </div>
           <div id="todoStatus" style={buttons_container_styles} className="buttons_container">
            <p style={{color: isDay ? "hsl(236, 9%, 61%)": "hsl(233, 14%, 35%)"}}> {(task.filter(item => item.status===isCompleted? true: false)).length} items {isCompleted? "completed": "left"}</p>
-           <button type="button" onClick={clearCompleted}><p style={{color: isDay ? "hsl(236, 9%, 61%)": "hsl(233, 14%, 35%)"}}>Clear Completed</p></button>
+           <button name="completed_item" type="button" onClick={clearCompleted}><p style={{color: isDay ? "hsl(236, 9%, 61%)": "hsl(233, 14%, 35%)"}}>Clear Completed</p></button>
           </div>
           <div style={{display: task.length===0 ? "none" : "flex", borderRadius: "0"}} className="handle_outer_shadow">
            <div style={{backgroundColor: isDay? "white": "hsl(235, 24%, 19%)"}} className="buttons_container">
             <p style={{color: isDay ? "hsl(236, 9%, 61%)": "hsl(233, 14%, 35%)", display: viewport ? "none" : "flex"}}> {(task.filter(item => item.status===isCompleted? true: false)).length} items {isCompleted? "completed": "left"}</p>
             <div className="toggleButtons">
-            <button type="button" onClick={renderCompleted}><p style={{color: (isActive===false&&isCompleted===false&&task.length!==0)? "hsl(220, 98%, 61%)": toggleButtonsColor.color}}>All</p></button>
-            <button type="button" onClick={handleActive}><p style={{color: (isActive&&task.length!==0)? "hsl(220, 98%, 61%)": toggleButtonsColor.color}}>Active</p></button>
-            <button type="button" onClick={handleCompleted}><p style={{color: (isCompleted&&task.length!==0)? "hsl(220, 98%, 61%)": toggleButtonsColor.color}}>Completed</p></button>
+            <button name="all_items" type="button" onClick={renderCompleted}><p style={{color: (isActive===false&&isCompleted===false&&task.length!==0)? "hsl(220, 98%, 61%)": toggleButtonsColor.color}}>All</p></button>
+            <button name="active_items" type="button" onClick={handleActive}><p style={{color: (isActive&&task.length!==0)? "hsl(220, 98%, 61%)": toggleButtonsColor.color}}>Active</p></button>
+            <button name="completed_items" type="button" onClick={handleCompleted}><p style={{color: (isCompleted&&task.length!==0)? "hsl(220, 98%, 61%)": toggleButtonsColor.color}}>Completed</p></button>
             </div>
-            <button style={{display: viewport ? "none" : "flex", color: isDay ? "hsl(236, 9%, 61%)": "hsl(233, 14%, 35%)"}} type="button" onClick={clearCompleted}><p>Clear Completed</p></button>
+            <button name="clear_completed" style={{display: viewport ? "none" : "flex", color: isDay ? "hsl(236, 9%, 61%)": "hsl(233, 14%, 35%)"}} type="button" onClick={clearCompleted}><p>Clear Completed</p></button>
             </div>
            </div>
           </form>
